@@ -1,0 +1,121 @@
+#name: habiba ehab mohi id:20240159
+import java.util.Scanner;
+
+public class InheritanceCalculator {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+
+        System.out.print("Spouse (1-Yes / 0-No): ");
+        int spouse = input.nextInt();
+
+        System.out.print("Father (1-Yes / 0-No): ");
+        int father = input.nextInt();
+
+        System.out.print("Mother (1-Yes / 0-No): ");
+        int mother = input.nextInt();
+
+        System.out.print("Number of sons: ");
+        int sons = input.nextInt();
+
+        System.out.print("Number of daughters: ");
+        int daughters = input.nextInt();
+
+        double spouseShare = 0;
+        double fatherShare = 0;
+        double motherShare = 0;
+        double remaining = 1.0;
+
+        if (sons > 0) {
+
+            if (spouse == 1)
+                spouseShare = 1.0 / 8.0;
+
+            if (mother == 1)
+                motherShare = 1.0 / 6.0;
+
+            if (father == 1)
+                fatherShare = 1.0 / 6.0;
+
+            remaining = 1.0 - (spouseShare + motherShare + fatherShare);
+
+            int shares = (sons * 2) + daughters;
+            double shareValue = remaining / shares;
+
+            System.out.println("\n--- Ratios ---");
+            System.out.println("Spouse: " + spouseShare);
+            System.out.println("Mother: " + motherShare);
+            System.out.println("Father: " + fatherShare);
+            System.out.println("Each Son: " + (shareValue * 2));
+
+            if (daughters > 0)
+                System.out.println("Each Daughter: " + shareValue);
+        }
+
+        else if (daughters == 1) {
+
+            if (spouse == 1)
+                spouseShare = 1.0 / 8.0;
+
+            if (mother == 1)
+                motherShare = 1.0 / 6.0;
+
+            double daughterShare = 1.0 / 2.0;
+
+            remaining = 1.0 - (spouseShare + motherShare + daughterShare);
+
+            if (father == 1)
+                fatherShare = remaining;
+
+            System.out.println("\n--- Ratios ---");
+            System.out.println("Spouse: " + spouseShare);
+            System.out.println("Mother: " + motherShare);
+            System.out.println("Father: " + fatherShare);
+            System.out.println("Daughter: " + daughterShare);
+        }
+
+        else if (daughters >= 2) {
+
+            if (spouse == 1)
+                spouseShare = 1.0 / 8.0;
+
+            if (mother == 1)
+                motherShare = 1.0 / 6.0;
+
+            double daughtersShare = 2.0 / 3.0;
+
+            remaining = 1.0 - (spouseShare + motherShare + daughtersShare);
+
+            if (father == 1)
+                fatherShare = remaining;
+
+            System.out.println("\n--- Ratios ---");
+            System.out.println("Spouse: " + spouseShare);
+            System.out.println("Mother: " + motherShare);
+            System.out.println("Father: " + fatherShare);
+            System.out.println("Each Daughter: " + (daughtersShare / daughters));
+        }
+
+        else {
+
+            if (spouse == 1)
+                spouseShare = 1.0 / 4.0;
+
+            if (mother == 1)
+                motherShare = 1.0 / 3.0;
+
+            remaining = 1.0 - (spouseShare + motherShare);
+
+            if (father == 1)
+                fatherShare = remaining;
+
+            System.out.println("\n--- Ratios ---");
+            System.out.println("Spouse: " + spouseShare);
+            System.out.println("Mother: " + motherShare);
+            System.out.println("Father: " + fatherShare);
+        }
+
+        input.close();
+    }
+}
