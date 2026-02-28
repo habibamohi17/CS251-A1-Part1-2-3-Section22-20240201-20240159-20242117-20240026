@@ -1,0 +1,163 @@
+//Name: Romissa Medhat Ahmed I.D.: 20240201
+
+//ComicBook Class
+public class ComicBook {
+    private String title;
+    private int issue_num;
+    private String MarvelDc;
+
+    public ComicBook (String title, String MarvelDc, int issue_num){
+        this.title = title;
+        this.MarvelDc = MarvelDc;
+        this.issue_num = issue_num;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public int getIssue_num() {
+        return issue_num;
+    }
+
+    public String getMarvelDc() {
+        return MarvelDc;
+    }
+
+    @Override
+    public String toString() {
+        return (title + " | " + MarvelDc + " | Issue #" + issue_num);
+    }
+}
+
+//ComicBookTracker Class
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class ComicBookTracker {
+    public static void main(String[] args) throws InterruptedException {
+        Scanner scanner = new Scanner(System.in);
+        String text = "LET'S TRACK YOUR COMICS!";
+        for (int i = 0; i < text.length(); i++) {
+            System.out.print(text.charAt(i));
+            Thread.sleep(100);
+        }
+        System.out.println();
+        ArrayList <ComicBook> ComicBook = new ArrayList<>();
+        String text2 = "Choose a number from the list down below:";
+        for (int i = 0; i < text2.length(); i++) {
+            System.out.print(text2.charAt(i));
+            Thread.sleep(100);
+        }
+        System.out.println();
+        Thread.sleep(1000);
+        while (true) {
+            System.out.println("1. Add a comic");
+            System.out.println("2. View my list");
+            System.out.println("3. remove a comic");
+            System.out.println("4. Exit");
+            int x = scanner.nextInt();
+            switch (x) {
+                case 1:
+                    String text3 = "LET'S ADD YOUR COMIC!";
+                    for (int i = 0; i < text3.length(); i++) {
+                        System.out.print(text3.charAt(i));
+                        Thread.sleep(100);
+                    }
+                    System.out.println();
+                    String text4 = "What's your comic called?";
+                    for (int i = 0; i < text4.length(); i++) {
+                        System.out.print(text4.charAt(i));
+                        Thread.sleep(100);
+                    }
+                    System.out.println();
+                    String name = scanner.next();
+                    scanner.nextLine();
+                    String text5 = "Marvel or DC?";
+                    for (int i = 0; i < text5.length(); i++) {
+                        System.out.print(text5.charAt(i));
+                        Thread.sleep(100);
+                    }
+                    System.out.println();
+                    String MarvelDC = scanner.nextLine();
+                    String text6 = "Which Issue are you reading?";
+                    for (int i = 0; i < text6.length(); i++) {
+                        System.out.print(text6.charAt(i));
+                        Thread.sleep(100);
+                    }
+                    System.out.println();
+                    int issue = scanner.nextInt();
+                    scanner.nextLine();
+                    ComicBook.add(new ComicBook(name, MarvelDC, issue));
+                    String text7 = "COMIC ADDED!";
+                    for (int i = 0; i < text7.length(); i++) {
+                        System.out.print(text7.charAt(i));
+                        Thread.sleep(100);
+                    }
+                    System.out.println();
+                    break;
+                case 2:
+                    String text8 = "LET'S SEE YOUR LIST!";
+                    for (int i = 0; i < text8.length(); i++) {
+                        System.out.print(text8.charAt(i));
+                        Thread.sleep(100);
+                    }
+                    System.out.println();
+                    if (ComicBook.isEmpty()) {
+                        System.out.print("Seems like you didn't add any comics :( \n");
+                    }
+                    else {
+                        for (int i = 0; i < ComicBook.size(); i++) {
+                            System.out.println((i + 1) + ". " + ComicBook.get(i));
+                        }
+                        String text9 = "That's a nice list you've got there!";
+                        for (int i = 0; i < text9.length(); i++) {
+                            System.out.print(text9.charAt(i));
+                            Thread.sleep(100);
+                        }
+                        System.out.println();
+                    }
+                    break;
+                case 3:
+                    String text10 = "LET'S REMOVE THAT COMIC!";
+                    for (int i = 0; i < text10.length(); i++) {
+                        System.out.print(text10.charAt(i));
+                        Thread.sleep(100);
+                    }
+                    System.out.println();
+                    for (int i = 0; i < ComicBook.size(); i++) {
+                        System.out.println(i + ". " + ComicBook.get(i));
+                    }
+                    System.out.println("Choose the number of the comic you want to remove");
+                    int j = scanner.nextInt();
+                    if (j >= 0 && j < ComicBook.size()){
+                        ComicBook.remove(j);
+                        System.out.println("COMIC REMOVED!");
+                    }
+                    else {
+                        System.out.println("Comic's not there :(");
+                    }
+                    for (int i = 0; i < ComicBook.size(); i++) {
+                        System.out.println(i + ". " + ComicBook.get(i));
+                    }
+                    break;
+                case 4:
+                    String text11 = "SEE YOU LATER!";
+                    for (int i = 0; i < text11.length(); i++) {
+                        System.out.print(text11.charAt(i));
+                        Thread.sleep(100);
+                    }
+                    System.out.println();
+                    return;
+                default:
+                    String text12 = "Invalid choice";
+                    for (int i = 0; i < text12.length(); i++) {
+                        System.out.print(text12.charAt(i));
+                        Thread.sleep(100);
+                    }
+                    System.out.println();
+            }
+        }
+
+    }
+}
